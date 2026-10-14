@@ -4,8 +4,9 @@
     <title>Visitor's Book</title>
 </head>
 <body>
-    <h1> Visitor's Book </h1>
-    <p>GITHUB PROJECT</p>
+    <h1> WELCOME TO LANDSAT </h1>
+    <h2> Visitor's Book </h2>
+    <p>Fill in the details below</p>
     
 </body>
 </html>
