@@ -139,13 +139,35 @@ require __DIR__ . '/includes/header.php';
 
                     <td class="px-4 py-3">
 
-                        <?php if ($v['time_out'] === null): ?>
-                            <span class="text-gray-500 text-xs">
-                                Checkout in Step 8
-                            </span>
-                        <?php else: ?>
-                            <span class="text-gray-400">—</span>
-                        <?php endif; ?>
+                        
+<?php if ($v['time_out'] === null): ?>
+
+    <form method="POST"
+          action="checkout.php"
+          onsubmit="return confirm('Check out this visitor?')">
+
+        <input type="hidden"
+               name="csrf"
+               value="<?= e(csrf_token()) ?>">
+
+        <input type="hidden"
+               name="id"
+               value="<?= (int) $v['id'] ?>">
+
+        <button type="submit"
+                class="text-sm bg-gray-800 text-white
+                       rounded px-3 py-1">
+            Check out
+        </button>
+
+    </form>
+
+<?php else: ?>
+
+    <span class="text-gray-400">—</span>
+
+<?php endif; ?>
+
 
                     </td>
 
