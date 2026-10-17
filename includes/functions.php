@@ -51,3 +51,26 @@ function require_login(): void {
 function now(): string {
     return date('Y-m-d H:i:s');
 }
+
+function visit_duration(string $timeIn, ?string $timeOut): string {
+
+    if ($timeOut === null) {
+        return 'Ongoing';
+    }
+
+    $start = new DateTimeImmutable($timeIn);
+    $end = new DateTimeImmutable($timeOut);
+
+    if ($end < $start) {
+        return 'Invalid time';
+    }
+
+    $seconds = $end->getTimestamp() - $start->getTimestamp();
+
+    $minutes = intdiv($seconds, 60);
+
+    $hours = intdiv($minutes, 60);
+    $remainingMinutes = $minutes % 60;
+
+    return $hours . 'h ' . $remainingMinutes . 'm';
+}

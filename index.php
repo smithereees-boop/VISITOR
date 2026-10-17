@@ -75,6 +75,7 @@ require __DIR__ . '/includes/header.php';
                 <th class="px-4 py-3">Purpose</th>
                 <th class="px-4 py-3">Time In</th>
                 <th class="px-4 py-3">Time Out</th>
+                <th class="px-4 py-3">Duration</th>
                 <th class="px-4 py-3">Action</th>
             </tr>
         </thead>
@@ -134,6 +135,12 @@ require __DIR__ . '/includes/header.php';
                             <?= e(date('H:i', strtotime($v['time_out']))) ?>
 
                         <?php endif; ?>
+                        <td class="px-4 py-3">
+    <?= e(visit_duration(
+        $v['time_in'],
+        $v['time_out']
+    )) ?>
+</td>
 
                     </td>
 
